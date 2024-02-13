@@ -30,6 +30,11 @@ Route::group([
     Route::get('user-profile', 'App\Http\Controllers\AuthController@userProfile');
 });
 
-Route::get('/hello', function () {
-    return response()->json(['message' => 'Hello, world!']);
-});
+
+
+
+Route::get('articles', 'App\Http\Controllers\ArticleController@index');
+Route::get('articles/{article}', 'App\Http\Controllers\ArticleController@show');
+Route::post('articles', 'App\Http\Controllers\ArticleController@store');
+Route::put('articles/{article}', 'App\Http\Controllers\ArticleController@update');
+Route::delete('articles/{article}', 'App\Http\Controllers\ArticleController@delete');

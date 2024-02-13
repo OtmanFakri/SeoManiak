@@ -45,6 +45,12 @@ class User extends Authenticatable implements JWTSubject
         'password' => 'hashed',
     ];
 
+
+    public function articles()
+    {
+        return $this->hasMany(Article::class);
+    }
+
     public function getJWTIdentifier()
     {
         return $this->getKey();
