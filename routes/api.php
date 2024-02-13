@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,4 +17,19 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+
+Route::group([
+    'middleware' => 'api',
+], function ($router) {
+    Route::post('login', 'App\Http\Controllers\AuthController@login');
+    Route::post('register', 'App\Http\Controllers\AuthController@register');
+    Route::post('logout', 'App\Http\Controllers\AuthController@logout');
+    Route::post('refresh', 'App\Http\Controllers\AuthController@refresh');
+    Route::get('user-profile', 'App\Http\Controllers\AuthController@userProfile');
+});
+
+Route::get('/hello', function () {
+    return response()->json(['message' => 'Hello, world!']);
 });
