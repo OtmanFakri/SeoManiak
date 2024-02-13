@@ -1,0 +1,415 @@
+openapi: 3.0.3
+info:
+  title: Laravel
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost'
+paths:
+  /api/user:
+    get:
+      summary: ''
+      operationId: getApiUser
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+  /api/login:
+    post:
+      summary: 'Get a JWT via given credentials.'
+      operationId: getAJWTViaGivenCredentials
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'Must be a valid email address.'
+                  example: hudson.shemar@example.com
+                password:
+                  type: string
+                  description: ''
+                  example: r@P%-U~Y<>gYRfKR57/^
+              required:
+                - email
+                - password
+      security: []
+  /api/register:
+    post:
+      summary: 'Register a User.'
+      operationId: registerAUser
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must be between 2 and 100 characters.'
+                  example: hpa
+                email:
+                  type: string
+                  description: 'Must be a valid email address. Must not be greater than 100 characters.'
+                  example: delphine30@example.net
+                password:
+                  type: string
+                  description: 'Must be at least 6 characters.'
+                  example: '.I<)Pv:"d?XAv'
+              required:
+                - name
+                - email
+                - password
+      security: []
+  /api/logout:
+    post:
+      summary: 'Log the user out (Invalidate the token).'
+      operationId: logTheUserOutInvalidateTheToken
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/refresh:
+    post:
+      summary: 'Refresh a token.'
+      operationId: refreshAToken
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/user-profile:
+    get:
+      summary: 'Get the authenticated User.'
+      operationId: getTheAuthenticatedUser
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+  /api/articles:
+    get:
+      summary: 'Handle the incoming request.'
+      operationId: handleTheIncomingRequest
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  current_page: 1
+                  data:
+                    -
+                      id: 1
+                      title: ar1
+                      body: body
+                      user_id: 1
+                      created_at: '2024-02-13T19:52:06.000000Z'
+                      updated_at: '2024-02-13T19:52:06.000000Z'
+                    -
+                      id: 2
+                      title: ar2
+                      body: ar2ar2ar2ar2ar2
+                      user_id: 1
+                      created_at: '2024-02-13T20:15:50.000000Z'
+                      updated_at: '2024-02-13T20:15:50.000000Z'
+                    -
+                      id: 3
+                      title: ar4
+                      body: ar2ar2ar2ar2ar2
+                      user_id: 1
+                      created_at: '2024-02-13T20:18:06.000000Z'
+                      updated_at: '2024-02-13T20:18:06.000000Z'
+                    -
+                      id: 4
+                      title: ar4
+                      body: ar2ar2ar2ar2ar2
+                      user_id: 1
+                      created_at: '2024-02-13T20:21:03.000000Z'
+                      updated_at: '2024-02-13T20:21:03.000000Z'
+                  first_page_url: 'http://localhost/api/articles?page=1'
+                  from: 1
+                  last_page: 1
+                  last_page_url: 'http://localhost/api/articles?page=1'
+                  links:
+                    -
+                      url: null
+                      label: '&laquo; Previous'
+                      active: false
+                    -
+                      url: 'http://localhost/api/articles?page=1'
+                      label: '1'
+                      active: true
+                    -
+                      url: null
+                      label: 'Next &raquo;'
+                      active: false
+                  next_page_url: null
+                  path: 'http://localhost/api/articles'
+                  per_page: 10
+                  prev_page_url: null
+                  to: 4
+                  total: 4
+                properties:
+                  current_page:
+                    type: integer
+                    example: 1
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        title: ar1
+                        body: body
+                        user_id: 1
+                        created_at: '2024-02-13T19:52:06.000000Z'
+                        updated_at: '2024-02-13T19:52:06.000000Z'
+                      -
+                        id: 2
+                        title: ar2
+                        body: ar2ar2ar2ar2ar2
+                        user_id: 1
+                        created_at: '2024-02-13T20:15:50.000000Z'
+                        updated_at: '2024-02-13T20:15:50.000000Z'
+                      -
+                        id: 3
+                        title: ar4
+                        body: ar2ar2ar2ar2ar2
+                        user_id: 1
+                        created_at: '2024-02-13T20:18:06.000000Z'
+                        updated_at: '2024-02-13T20:18:06.000000Z'
+                      -
+                        id: 4
+                        title: ar4
+                        body: ar2ar2ar2ar2ar2
+                        user_id: 1
+                        created_at: '2024-02-13T20:21:03.000000Z'
+                        updated_at: '2024-02-13T20:21:03.000000Z'
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        title:
+                          type: string
+                          example: ar1
+                        body:
+                          type: string
+                          example: body
+                        user_id:
+                          type: integer
+                          example: 1
+                        created_at:
+                          type: string
+                          example: '2024-02-13T19:52:06.000000Z'
+                        updated_at:
+                          type: string
+                          example: '2024-02-13T19:52:06.000000Z'
+                  first_page_url:
+                    type: string
+                    example: 'http://localhost/api/articles?page=1'
+                  from:
+                    type: integer
+                    example: 1
+                  last_page:
+                    type: integer
+                    example: 1
+                  last_page_url:
+                    type: string
+                    example: 'http://localhost/api/articles?page=1'
+                  links:
+                    type: array
+                    example:
+                      -
+                        url: null
+                        label: '&laquo; Previous'
+                        active: false
+                      -
+                        url: 'http://localhost/api/articles?page=1'
+                        label: '1'
+                        active: true
+                      -
+                        url: null
+                        label: 'Next &raquo;'
+                        active: false
+                    items:
+                      type: object
+                      properties:
+                        url:
+                          type: string
+                          example: null
+                        label:
+                          type: string
+                          example: '&laquo; Previous'
+                        active:
+                          type: boolean
+                          example: false
+                  next_page_url:
+                    type: string
+                    example: null
+                  path:
+                    type: string
+                    example: 'http://localhost/api/articles'
+                  per_page:
+                    type: integer
+                    example: 10
+                  prev_page_url:
+                    type: string
+                    example: null
+                  to:
+                    type: integer
+                    example: 4
+                  total:
+                    type: integer
+                    example: 4
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: ''
+      operationId: postApiArticles
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: adecrfntr
+                body:
+                  type: string
+                  description: ''
+                  example: aut
+              required:
+                - title
+                - body
+      security: []
+  '/api/articles/{article_id}':
+    get:
+      summary: 'Handle the incoming request.'
+      operationId: handleTheIncomingRequest
+      description: ''
+      parameters: []
+      responses:
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Article not found'
+                properties:
+                  message:
+                    type: string
+                    example: 'Article not found'
+      tags:
+        - Endpoints
+      security: []
+    put:
+      summary: 'Handle the incoming request.'
+      operationId: handleTheIncomingRequest
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: uahcsdxs
+                body:
+                  type: string
+                  description: ''
+                  example: temporibus
+              required:
+                - title
+                - body
+      security: []
+    delete:
+      summary: 'Handle the incoming request.'
+      operationId: handleTheIncomingRequest
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: article_id
+        description: 'The ID of the article.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+tags:
+  -
+    name: Endpoints
+    description: ''
